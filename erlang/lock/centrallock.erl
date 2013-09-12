@@ -4,7 +4,7 @@
 
 
 -module(centrallock).
--export([acquire/1, release/1]).
+-export([acquire/1, release/1, start/0]).
 
 
 %% The operations are
@@ -45,4 +45,18 @@ stateAcquire(Pid,{CurPid,Queue}) ->
 	    {CurPid,lists:append(Queue,[Pid])};
        true -> send_mesg(Pid, ok),
 	       {CurPid,Queue}
+    end.
+
+%% The server loop.
+
+start() ->
+    spawn(fun () ->  loop(unlocked) end).
+
+loop(State) ->
+    io:format("Server State:~w~n",[State]),
+    receive
+	{Pid, acquire} ->
+	    loop(stateAcquire(Pid, State));
+	{Pid, release} ->
+	    loop(stateRelease(Pid,State))
     end.
