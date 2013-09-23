@@ -17,6 +17,13 @@
 %% Concepts not done in class: Formated print, List functions.
 %%
 
+%% Remark: You code *should work* work even if the lines are changed.
+%% In particular you should not assume anything about the names of the
+%% station, or their ordering or the topology of the network. In other
+%% words think of this red, blue and green line as a sample input to your
+%% program.
+
+
 line(red,
 	[ rithala,
           rohini-east,
