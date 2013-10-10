@@ -10,12 +10,12 @@ passesThrough(L,X) :- line(L,R), member(X,R).
 junction(X) :- bagof(L,passesThrough(L,X),Routes), length(Routes,U), U>1.
 
 %% Checks whether there is a path from X to Y with N-changes.
-path(X,X,_,[]).
-path(X,Y,_,[[X,L,Y]]) :- direct(X,Y,L).
+path(X,X,_,[]) :- !.
+path(X,Y,_,[[X,L,Y]]) :- direct(X,Y,L), !.
 path(X,Y,N,Route) :-
         N > 1,
         M is N - 1,
-        path(X,Y, M, Route).
+        path(X,Y, M, Route), !.
 
 path(X,Y,N,[[X,L,I]|Rest]) :-
         N > 0,
