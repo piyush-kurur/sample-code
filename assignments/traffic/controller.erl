@@ -11,7 +11,7 @@
 %% using two traffic lights. These traffic lights are simple 2-state
 %% traffic light, and an implementation is given in the module signal:
 
-%%      http://github.com/piyush-kurur/sample-code/assignments/traffic/signal.erl
+%% http://github.com/piyush-kurur/sample-code/blob/assignment/assignments/traffic/signal.erl
 
 %% One of the traffic signal controls the flow of vehicles and the
 %% other allows/disallows the pedestrians from crossing.
