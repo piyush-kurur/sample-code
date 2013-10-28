@@ -30,7 +30,18 @@ lemma : ∀ (a b : ℕ) → a + succ b ≡ succ (a + b)
 lemma zero     b = refl
 lemma (succ a) b = cong succ (lemma a b)
 
+import Relation.Binary.EqReasoning as EqR
+open module EqNat = EqR (setoid ℕ)
+
 +-is-commutative : ∀ (a b : ℕ) → a + b ≡ b + a
 +-is-commutative a zero     = 0-is-right-identity-of-+ a
-+-is-commutative a (succ b)
-  = trans (lemma a b) (cong succ (+-is-commutative a b))
++-is-commutative a (succ b) =
+  begin
+    a + succ b
+      ≈⟨ lemma a b ⟩
+    succ (a + b)
+      ≈⟨ cong succ (+-is-commutative a b) ⟩
+    succ (b + a)
+      ≈⟨ refl ⟩
+    succ b + a
+  ∎
