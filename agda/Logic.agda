@@ -2,7 +2,7 @@ module Logic where
 
 -- The true proposition.
 data ⊤ : Set where
-  true : ⊤ -- The proof of truth.
+  obvious : ⊤ -- The proof of truth.
 
 -- The false proposition.
 data ⊥ : Set where
