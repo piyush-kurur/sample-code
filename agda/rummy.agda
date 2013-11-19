@@ -94,8 +94,8 @@ Q♠  : Card Q  ♠; Q♠  = Q  of ♠
 K♠  : Card K  ♠; K♠  = K  of ♠
 
 
--- A run should be at least of length 1.
-data Run : Suit → (start : ℕ) → (length : ℕ) → Set where
+-- A run of length ℓ.
+data Run : Suit → (start ℓ : ℕ) → Set where
   [] : {suit : Suit} {start : ℕ} → Run  suit  start 0
 
   _,_ : {suit : Suit} {n ℓ : ℕ}
@@ -104,7 +104,7 @@ data Run : Suit → (start : ℕ) → (length : ℕ) → Set where
        → Run    suit    n     (1 + ℓ)
 
 
--- A group should be at least of size on.
+-- A group of length ℓ.
 data Group : (value ℓ : ℕ) → Set where
   [] : {value : ℕ} → Group value 0
 
@@ -115,7 +115,8 @@ data Group : (value ℓ : ℕ) → Set where
 
 -- Some pretty functions for creating runs. You can create a run as
 -- follows:
--- myrun  = ⟨ A♣ , 2♣ , 3♣ ⟩
+--
+-- myrun = ⟨ A♣ , 2♣ , 3♣ ⟩
 --
 
 ⟨_ : {suit : Suit} {n ℓ : ℕ} → Run suit n ℓ → Run suit n ℓ
@@ -129,6 +130,7 @@ c ⟩ = c , []
 -- group as follows:
 --
 -- mygroup = ⟦ A♣ , A♥ , A♢ ⟧
+--
 
 ⟦_ : {value ℓ : ℕ} → Group value ℓ → Group value ℓ
 ⟦ g = g
