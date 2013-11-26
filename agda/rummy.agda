@@ -93,12 +93,11 @@ J♠  : Card J  ♠; J♠  = J  of ♠
 Q♠  : Card Q  ♠; Q♠  = Q  of ♠
 K♠  : Card K  ♠; K♠  = K  of ♠
 
-
 -- A run of length ℓ.
-data Run : Suit → (start ℓ : ℕ) → Set where
-  [] : {suit : Suit} {start : ℕ} → Run  suit  start 0
+data Run  (suit : Suit) : (start ℓ : ℕ) → Set where
+  [] : {start : ℕ} → Run  suit  start 0
 
-  _,_ : {suit : Suit} {n ℓ : ℕ}
+  _,_ : {n ℓ : ℕ}
        → Card n suit
        → Run    suit (1 + n)     ℓ
        → Run    suit    n     (1 + ℓ)
