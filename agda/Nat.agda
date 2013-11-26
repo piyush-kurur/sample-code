@@ -4,6 +4,9 @@ data ℕ : Set where
   zero : ℕ
   succ : ℕ → ℕ
 
+{-# BUILTIN NATURAL ℕ #-}
+{-# BUILTIN ZERO zero #-}
+{-# BUILTIN SUC  succ #-}
 
 _+_ : ℕ → ℕ → ℕ
 zero   + b = b
