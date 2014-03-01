@@ -25,6 +25,15 @@ three = succ two
   ∎
 
 +-assoc : ∀ (a b c : ℕ) → (a + b) + c ≡ a + (b + c)
++-assoc zero     b c = definition
++-assoc (succ a) b c =
+  begin ((succ a + b) + c)
+               ≈ succ (a + b) + c by definition
+               ≈ succ ((a + b) + c) by definition
+               ≈ succ (a + (b + c)) by cong succ (+-assoc a b c)
+               ≈ succ a + (b + c) by definition
+  ∎
+{-
 +-assoc zero     b c     = definition
 +-assoc (succ a) b c     =
   begin ((succ a + b) + c)
@@ -33,3 +42,4 @@ three = succ two
                ≈ succ (a  + (b + c)) by cong succ (+-assoc a b c)
                ≈ succ a   + (b + c)  by definition
   ∎
+-}
