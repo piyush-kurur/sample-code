@@ -7,7 +7,7 @@
 module TryGen ( explode, consolidate, Bar(..)) where
 
 import GHC.Generics
-import Data.Typeable
+import Data.Proxy
 import Data.Text ( pack, unpack, Text)
 
 
