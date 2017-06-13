@@ -143,7 +143,8 @@ instance Applicative RecParser where
 
 -- | Exercise can you define Monad instance.
 
--- | Get the value associate with a key and the rest of the records.
+-- | The parser @field k@ matches the key @k@, in the input kv pairs
+-- and returns the associated value.
 field  :: Text -> RecParser Text
 field k = RecParser action
   where matcher   = (==k) . fst
